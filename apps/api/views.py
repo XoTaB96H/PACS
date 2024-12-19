@@ -3,9 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 from apps.credentials.models import Credential
-from apps.devices.models import Device, AccessGroupDevicesMap
+from apps.devices.models import Device
 from apps.access_logs.models import AccessLog
-from apps.users.models import UserRole, Role
+from apps.users.models import Role
 from .serializers import CheckAccessSerializer
 
 class CheckAccessView(APIView):

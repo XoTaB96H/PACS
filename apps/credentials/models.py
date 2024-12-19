@@ -1,11 +1,4 @@
 from django.db import models
-from django.conf import settings
-
-# Предполагаем, что User модель находится в apps.users.models
-# Если она называется User и находится в том же проекте, можно импортировать:
-# from apps.users.models import User
-# или использовать get_user_model() если вы интегрируете с Django auth.
-# В данном случае, так как мы писали пользовательскую модель, импорты будут выглядеть так:
 from apps.users.models import User
 
 class Credential(models.Model):
@@ -21,5 +14,9 @@ class Credential(models.Model):
     credential_value = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name = "Идентификатор"
+        verbose_name_plural = "Идентификаторы"
+
     def __str__(self):
-        return f"{self.user} - {self.credential_type}: {self.credential_value}"
+        return f"{self.user} - {self.get_credential_type_display()}: {self.credential_value}"

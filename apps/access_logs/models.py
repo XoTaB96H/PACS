@@ -19,5 +19,10 @@ class AccessLog(models.Model):
     result = models.CharField(max_length=8, choices=RESULT_CHOICES)
     additional_info = models.TextField(null=True, blank=True)
 
+    class Meta:
+        verbose_name = "Запись журнала"
+        verbose_name_plural = "Журнал проходов"
+        ordering = ['-timestamp']
+
     def __str__(self):
         return f"{self.timestamp}: {self.credential} - {self.device} [{self.result}]"
