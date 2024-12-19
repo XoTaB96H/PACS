@@ -1,0 +1,18 @@
+body {
+    background-color: #f8f9fa; /* Светлый фон */
+}
+
+/* Пример изменения navbar */
+.navbar {
+    border-bottom: 2px solid #ccc;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.btn-primary:hover {
+    background-color: #004a99;
+    border-color: #004a99;
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Детали события{% endblock %}
+{% block content %}
+<h1>Детали события</h1>
+<p><strong>Время:</strong> {{ log.timestamp }}</p>
+<p><strong>Пользователь:</strong> {{ log.credential.user.last_name }} {{ log.credential.user.first_name }}</p>
+<p><strong>Пропуск:</strong> {{ log.credential.credential_value }} ({{ log.credential.get_credential_type_display }})</p>
+<p><strong>Устройство:</strong> {{ log.device.name }} ({{ log.device.location }})</p>
+<p><strong>Направление:</strong> {{ log.get_direction_display }}</p>
+<p><strong>Результат:</strong>
+{% if log.result == 'granted' %}
+  <span class="badge bg-success">Разрешено</span>
+{% else %}
+  <span class="badge bg-danger">Запрещено</span>
+{% endif %}
+</p>
+{% if log.additional_info %}
+<p><strong>Доп. информация:</strong> {{ log.additional_info }}</p>
+{% endif %}
+<a href="{% url 'access_logs:log_list' %}" class="btn btn-secondary">Назад к журналу</a>
+{% endblock %}

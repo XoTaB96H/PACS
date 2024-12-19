@@ -1,0 +1,4 @@
+/* Дополнительные стили, например, таблицы логов */
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #eef2f7;
+}

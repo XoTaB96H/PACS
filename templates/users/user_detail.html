@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Информация о пользователе{% endblock %}
+{% block content %}
+<h1>Информация о пользователе</h1>
+<p><strong>ФИО:</strong> {{ user.last_name }} {{ user.first_name }} {{ user.middle_name }}</p>
+<p><strong>Активен:</strong> {{ user.is_active|yesno:"Да,Нет" }}</p>
+<p><strong>Роли:</strong>
+  {% for role in user.roles.all %}
+    <span class="badge bg-info">{{ role.name }}</span>
+  {% endfor %}
+</p>
+{% if user.photo %}
+  <p><img src="{{ user.photo }}" alt="Фото {{ user.first_name }}" class="img-fluid img-thumbnail" style="max-width:200px;"></p>
+{% endif %}
+<a href="{% url 'users:user_list' %}" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}
